@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Example</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script async src="./index.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="ml-10 mt-10 mb-5 text-2xl font-semibold">{{message}}</div>
+      <div class="flex flex-col h-64 bg-gray-100 justify-center items-center">
+        <div id="circlesrow" class="m-auto flex justify-center items-center">
+          <div
+            v-for="n in endValue"
+            class="m-auto h-2 flex justify-start items-center"
+          >
+            <div
+              :class="{'border-blue-300': stepReached(n),
+                         'border-gray-300': !stepReached(n)}"
+              class="rounded-full h-8 w-8 border-4 bg-white flex items-center justify-center"
+            >
+              {{n}}
+            </div>
+            <div
+              v-if="n < endValue"
+              :class="{'bg-blue-300': n < current,
+                    'bg-gray-300': n >= current}"
+              class="w-20 h-1"
+            ></div>
+          </div>
+        </div>
+        <!-- this is where the buttons start-->
+        <div
+          id="buttonsrow"
+          class="m-auto text-white flex justify-center items-center"
+        >
+          <div
+            v-on:click="goBack"
+            :class="{'bg-gray-400': !canGoBack,
+                     'bg-blue-400': canGoBack}"
+            class="p-2 text-sm rounded-lg w-20 h-10 flex justify-center items-center text-white"
+          >
+            <a>Prev</a>
+          </div>
+          <div
+            v-on:click="goNext"
+            :class="{'bg-gray-400': !canGoNext,
+                     'bg-blue-400': canGoNext}"
+            class="ml-2 p-2 text-sm rounded-lg w-20 h-10 flex justify-center text-white"
+          >
+            <a>Next</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
