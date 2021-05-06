@@ -1,6 +1,6 @@
 # Sliding Images
 
-This is a simple progress steeps implementation.
+This is a simple progress steps implementation.
 
 It uses [Vue.js](https://vuejs.org) , and also [Tailwindcss](https://tailwindcss.com).
 
